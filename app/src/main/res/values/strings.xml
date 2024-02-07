@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RecyclerViewAndCardView</string>
+    <string name="sil">Sil</string>
+    <string name="d_zenle">Düzenle</string>
 </resources>

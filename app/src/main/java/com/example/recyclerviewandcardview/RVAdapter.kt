@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -68,6 +69,28 @@ class RVAdapter (private val mContext : Context, private val countryList : List<
         //tıklanınca gerçekleşmesini istediğimiz özellikleri de burada belirtiyoruz.
         holder.cardView.setOnClickListener{
             Toast.makeText(mContext , "Chosen Country : ${country.countryName}" , Toast.LENGTH_SHORT).show()
+        }
+
+        holder.moreIcon.setOnClickListener {
+            val popup = PopupMenu(mContext , holder.moreIcon)
+
+            popup.menuInflater.inflate(R.menu.popup_menu,popup.menu)
+
+            popup.show()
+
+            popup.setOnMenuItemClickListener { item ->
+                when(item.itemId){
+                    R.id.action_delete -> {
+                        Toast.makeText(mContext , "Silindi : ${country.countryName}" , Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    R.id.action_edit -> {
+                        Toast.makeText(mContext , "Düzenlendi : ${country.countryName}" , Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
 
 
